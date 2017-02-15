@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-feb-2017 13:27:33 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="models.Inventario" table="inventario" catalog="puerto" optimistic-lock="version">
+        <id name="idInventario" type="java.lang.Integer">
+            <column name="id_inventario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="barco" class="models.Barco" fetch="select">
+            <column name="id_barco" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mercancia" class="models.Mercancia" fetch="select">
+            <column name="id_mercancia" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="int">
+            <column name="cantidad" not-null="true" />
+        </property>
+        <property name="peso" type="double">
+            <column name="peso" precision="10" scale="3" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-feb-2017 13:27:33 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="models.Mercancia" table="mercancia" catalog="puerto" optimistic-lock="version">
+        <id name="idMercancia" type="int">
+            <column name="id_mercancia" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="25" not-null="true" />
+        </property>
+        <property name="peso" type="double">
+            <column name="peso" precision="10" scale="3" not-null="true" />
+        </property>
+        <set name="inventarios" table="inventario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_mercancia" not-null="true" />
+            </key>
+            <one-to-many class="models.Inventario" />
+        </set>
+    </class>
+</hibernate-mapping>

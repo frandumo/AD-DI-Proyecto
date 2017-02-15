@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-feb-2017 13:27:33 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="models.Muelle" table="muelle" catalog="puerto" optimistic-lock="version">
+        <id name="idMuelle" type="java.lang.Integer">
+            <column name="id_muelle" />
+            <generator class="identity" />
+        </id>
+        <property name="size" type="string">
+            <column name="size" length="25" not-null="true" />
+        </property>
+        <property name="ocupado" type="java.lang.Boolean">
+            <column name="ocupado" />
+        </property>
+        <set name="estancias" table="estancia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_muelle" not-null="true" />
+            </key>
+            <one-to-many class="models.Estancia" />
+        </set>
+    </class>
+</hibernate-mapping>
